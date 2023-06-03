@@ -76,8 +76,7 @@ def grad_desc(x, y, a, iter):
 
         if i == iter-1:
             predictions = get_pred(a2)
-            print('Training Accuracy: ')
-            print(get_acc(predictions, y))
+            print('Training Accuracy: ' + str(get_acc(predictions, y)))
     return w1, b1, w2, b2
 
 
@@ -87,7 +86,7 @@ def make_pred(x, w1, b1, w2, b2):
     return pred
 
 
-def test_pred(index, w1, b1, w2, b2):
+def test_pred(index, w1, b1, w2, b2):   
     current_image = x_train[:, index, None]
     pred = make_pred(x_train[:, index, None], w1, b1, w2, b2)
     label = y_train[index]
@@ -120,5 +119,4 @@ m_train = x_train.shape
 
 w1, b1, w2, b2 = grad_desc(x_train, y_train, 0.10, 500)
 dev_predictions = make_pred(x_test, w1, b1, w2, b2)
-print('Test Accuracy: ')
-print(get_acc(dev_predictions, y_test))
+print('Test Accuracy: ' + str(get_acc(dev_predictions, y_test)))
